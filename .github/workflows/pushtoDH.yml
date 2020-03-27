@@ -8,7 +8,7 @@ jobs:
     steps: 
     - uses: actions/checkout@v1
     - name: Build and tag image 
-      run: docker build -t "docker.pkg.github.com/zhuorg/newdocker/docker-test:1.0.0" -f Dockerfile .
+      run: docker build -t "zhu5201314/DockerContainer_action:1.4.0" -f Dockerfile .
 
    
 
@@ -16,7 +16,7 @@ jobs:
 
       run: |
 
-         docker run docker.pkg.github.com/zhuorg/newdocker/docker-test:1.0.0 --isolation=hyperv
+         docker run zhu5201314/DockerContainer_action:1.4.0 
 
     #docker login docker.pkg.github.com -u ${{ github.actor }} -p ${{ secrets.GITHUB_TOKEN }}
 
@@ -24,24 +24,12 @@ jobs:
 
 
 
-#    - name: Docker login 
+    - name: Docker login 
+      run: docker login docker.pkg.github.com -u yanjingzhu -p $dockerhub_pw 
+      env: 
+        dockerhub_pw: ${{secrets.DHPW}} 
 
 
 
-#      run: docker login docker.pkg.github.com -u $GITHUB_ACTOR -p $GITHUB_TOKEN 
-
-
-
- #     env: 
-
-
-
-   #       GITHUB_TOKEN: ${{secrets.GITHUB_TOKEN}} 
-
-
-
-   # - name: Publish to GPR 
-
-
-
-  #    run: docker push "docker.pkg.github.com/zhuorg/newdocker/docker-learn:$GITHUB_SHA"
+    - name: Publish to GPR 
+      run: docker push "zhu5201314/DockerContainer_action:1.4.0"
