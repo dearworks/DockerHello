@@ -1,6 +1,6 @@
 name: push docker image to dockerhub
 on: 
- check_suite:
+ push:
 
 jobs: 
   build: 
@@ -13,9 +13,7 @@ jobs:
    
 
     - name: run
-
       run: |
-
          docker run zhu5201314/DockerContainer_action:1.4.0 
 
     #docker login docker.pkg.github.com -u ${{ github.actor }} -p ${{ secrets.GITHUB_TOKEN }}
@@ -25,7 +23,7 @@ jobs:
 
 
     - name: Docker login 
-      run: docker login docker.pkg.github.com -u yanjingzhu -p $dockerhub_pw 
+      run: docker login -u yanjingzhu -p $dockerhub_pw 
       env: 
         dockerhub_pw: ${{secrets.DHPW}} 
 
