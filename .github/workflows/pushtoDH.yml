@@ -1,0 +1,47 @@
+name: push docker image to dockerhub
+on: 
+ check_suite:
+
+jobs: 
+  build: 
+    runs-on: ubuntu-latest 
+    steps: 
+    - uses: actions/checkout@v1
+    - name: Build and tag image 
+      run: docker build -t "docker.pkg.github.com/zhuorg/newdocker/docker-test:1.0.0" -f Dockerfile .
+
+   
+
+    - name: run
+
+      run: |
+
+         docker run docker.pkg.github.com/zhuorg/newdocker/docker-test:1.0.0 --isolation=hyperv
+
+    #docker login docker.pkg.github.com -u ${{ github.actor }} -p ${{ secrets.GITHUB_TOKEN }}
+
+    #docker push docker.pkg.github.com/zhuorg/newdocker/docker-learn:$GITHUB_SHA  
+
+
+
+#    - name: Docker login 
+
+
+
+#      run: docker login docker.pkg.github.com -u $GITHUB_ACTOR -p $GITHUB_TOKEN 
+
+
+
+ #     env: 
+
+
+
+   #       GITHUB_TOKEN: ${{secrets.GITHUB_TOKEN}} 
+
+
+
+   # - name: Publish to GPR 
+
+
+
+  #    run: docker push "docker.pkg.github.com/zhuorg/newdocker/docker-learn:$GITHUB_SHA"
