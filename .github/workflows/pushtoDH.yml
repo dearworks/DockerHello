@@ -14,7 +14,7 @@ jobs:
 
     - name: run
       run: |
-         docker run zhu5201314/dockerContainer_action:1.4.0 
+         docker run zhu5201314/dockercontainer_action:1.4.0 
 
     #docker login docker.pkg.github.com -u ${{ github.actor }} -p ${{ secrets.GITHUB_TOKEN }}
 
