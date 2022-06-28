@@ -2,6 +2,10 @@ pipeline {
   
   agent any
   
+  environment {
+    JENKINS_DOCKER_CREDS = credentials('JENKINS_DOCKER_CREDS')
+  }
+  
   stages {
     stage("Build image") {
       steps {
@@ -18,11 +22,8 @@ pipeline {
     stage("Deploy image") {
       steps {
         echo 'Deploying image...'
-          withCredentials([
-            usernamePassword(credentials: 'docker-creds', usernameVariable: USER, passwordVariable: PASS)
-          ]) {
-              sh "docker deploy -u ${USER} -p ${PASS}"
-             }
+        echo "${JENKINS_DOCKER_CREDS_USR}"
+        sh "docker deploy -u ${JENKINS_DOCKER_CREDS_USR} -p ${JENKINS_DOCKER_CREDS_PSW}"
       } 
     }
   }
