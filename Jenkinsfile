@@ -16,7 +16,7 @@ pipeline {
     
     stage("Push image") {
       steps {
-        echo 'Pushing image...'
+        echo 'Pushing image....'
       }
     }
 
