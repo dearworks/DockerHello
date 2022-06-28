@@ -20,11 +20,10 @@ pipeline {
       }
     }
 
-    stage("Deploy image") {
+    stage("Running image") {
       steps {
-        echo 'Deploying image....'
-        echo "${JENKINS_DOCKER_CREDS_USR}"
-        sh "docker deploy -u ${JENKINS_DOCKER_CREDS_USR} -p ${JENKINS_DOCKER_CREDS_PSW}"
+        echo 'Running image....'
+        sh "docker run --name docker-hello -d custom-nginx"
       } 
     }
   }
