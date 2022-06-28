@@ -24,7 +24,7 @@ pipeline {
     stage("Running image") {
       steps {
         echo 'Running image....'
-        sh "docker run --name docker-hello -d docker-hello"
+        sh "docker run --name docker-hello -d mantasme/docker-hello"
       } 
     }
   }
