@@ -4,20 +4,26 @@ pipeline {
   
   stages {
     stage("Build image") {
-      echo 'Building image...'
+      steps {
+        echo 'Building image...'
+      }
     }
     
     stage("Push image") {
-      echo 'Pushing image...'
+      steps {
+        echo 'Pushing image...'
+      }
     }
 
     stage("Deploy image") {
-      echo 'Deploying image...'
-        withCredentials([
-          usernamePassword(credentials: 'docker-creds', usernameVariable: USER, passwordVariable: PASS)
-        ]) {
-            sh "docker deploy -u ${USER} -p ${PASS}"
-           }
+      steps {
+        echo 'Deploying image...'
+          withCredentials([
+            usernamePassword(credentials: 'docker-creds', usernameVariable: USER, passwordVariable: PASS)
+          ]) {
+              sh "docker deploy -u ${USER} -p ${PASS}"
+             }
+      } 
     }
   }
   
