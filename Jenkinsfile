@@ -32,7 +32,7 @@ pipeline {
   post {
     always {
       echo '*** CLEANING UP UNTAGGED IMAGES ***'
-      sh 'docker rmi $(docker images -f dangling=true -q)'
+      sh "docker rmi $(docker images -f dangling=true -q)"
       echo '**********************'
       sh "docker images -a"
       echo '**********************'
