@@ -32,6 +32,9 @@ pipeline {
   post {
     always {
       echo '*** PIPELINE ENDED ***'
+      echo ''
+      echo 'Running containers:'
+      sh 'docker ps'
     }
 
     success {
