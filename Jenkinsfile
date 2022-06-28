@@ -24,7 +24,7 @@ pipeline {
     stage("Run image") {
       steps {
         echo 'Removing any running containers'
-        sh 'docker rm -v docker-hello'
+        sh 'docker rm -vf docker-hello'
         echo 'Running image....'
         sh "docker run --name docker-hello -d mantasme/docker-hello"
       } 
