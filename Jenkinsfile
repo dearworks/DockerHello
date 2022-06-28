@@ -26,7 +26,8 @@ pipeline {
         echo 'Removing any running containers'
         sh 'docker rm -vf docker-hello'
         echo 'Running image....'
-        sh "docker run --name docker-hello -d -p 8888:80 mantasme/docker-hello"
+        # sh "docker run --name docker-hello -d -p 8888:80 mantasme/docker-hello"
+        sh "docker compose -f docker-compose.yml run mantasme/docker-hello"
       } 
     }
   }
