@@ -3,8 +3,6 @@ version: "1"
 services:
   web:
     image: mantasme/docker-hello
-    volumes:
-      - ./templates:/etc/nginx/templates
     ports:
       - "8888:80"
     environment:
