@@ -11,9 +11,6 @@ pipeline {
       steps {
         echo 'Building image...'
         sh "docker build -t mantasme/docker-hello:latest -t mantasme/docker-hello:v1.0 ."
-        echo '**********************'
-        sh "docker images -a"
-        echo '**********************'
       }
     }
     
@@ -34,7 +31,11 @@ pipeline {
   
   post {
     always {
-      echo 'Pipeline finished'
+      echo '*** CLEANING UP UNTAGGED IMAGES ***'
+      sh 'docker rmi $(docker images -f dangling=true -q)'
+      echo '**********************'
+      sh "docker images -a"
+      echo '**********************'
     }
 
     success {
