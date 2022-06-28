@@ -9,7 +9,7 @@ pipeline {
   stages {
     stage("Build image") {
       steps {
-        echo 'Building image....'
+        echo 'Building image...'
         sh "docker build -t mantasme/docker-hello:latest -t mantasme/docker-hello:v1.0 ."
       }
     }
