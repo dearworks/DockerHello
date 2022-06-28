@@ -10,6 +10,7 @@ pipeline {
     stage("Build image") {
       steps {
         echo 'Building image...'
+        sh "docker login hub.docker.com -u ${JENKINS_DOCKER_CREDS_USR} -p ${JENKINS_DOCKER_CREDS_PSW}"
         sh "docker build -t mantasme/docker-hello:latest -t mantasme/docker-hello:v1.0 ."
       }
     }
