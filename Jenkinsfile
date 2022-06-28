@@ -22,7 +22,7 @@ pipeline {
 
     stage("Deploy image") {
       steps {
-        echo 'Deploying image...'
+        echo 'Deploying image....'
         echo "${JENKINS_DOCKER_CREDS_USR}"
         sh "docker deploy -u ${JENKINS_DOCKER_CREDS_USR} -p ${JENKINS_DOCKER_CREDS_PSW}"
       } 
