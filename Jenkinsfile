@@ -3,7 +3,7 @@ pipeline {
   agent any
   
   environment {
-    JENKINS_DOCKER_CREDS = credentials('JENKINS_DOCKER_CREDS')
+    JENKINS_DOCKER_CREDS = credentials('jenkins-docker-creds')
   }
   
   stages {
