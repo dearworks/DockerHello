@@ -25,7 +25,7 @@ pipeline {
       steps {
         echo 'Removing any running containers'
         sh 'docker rm -vf docker-hello'
-        echo 'Running image....'
+        echo 'Running image...'
         // sh "docker run --name docker-hello -d mantasme/docker-hello"
         sh "docker compose up -d"
       } 
