@@ -24,7 +24,7 @@ pipeline {
       steps {
         echo 'Deploying image....'
         echo "${JENKINS_DOCKER_CREDS_USR}"
-        sh "docker deploy -u ${JENKINS_DOCKER_CREDS_USR} -p ${JENKINS_DOCKER_CREDS_PSW}"
+        sh "docker run mantasme/docker-hello"
       } 
     }
   }
